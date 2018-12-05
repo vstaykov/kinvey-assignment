@@ -1,0 +1,5 @@
+Reasearch
+    - NodeJS
+    - MongoDB
+    - Redis
+    - Kinvey
