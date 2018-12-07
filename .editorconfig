@@ -1,0 +1,21 @@
+root=true
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{*.markdown,*.md,*.mdown,*.mkd,*.mkdn,*.text}]
+trim_trailing_whitespace = disabled
+
+[node_modules/**]
+charset = disabled
+end_of_line = disabled
+indent_size = disabled
+indent_style = disabled
+insert_final_newline = disabled
+trim_trailing_whitespace = disabled
+
+
