@@ -2,8 +2,21 @@
   "name": "server-assignment",
   "version": "1.0.0",
   "scripts": {
+    "lint": "esw",
+    "lint:watch" : "esw -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ventsislav Staykov",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-watch": "^4.0.2",
+    "prettier": "^1.15.3"
+  }
 }
