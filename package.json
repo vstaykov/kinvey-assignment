@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "lint": "esw",
-    "lint:watch" : "esw -w",
+    "lint:watch": "esw -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ventsislav Staykov",
@@ -18,5 +18,8 @@
     "eslint-plugin-react": "^7.11.1",
     "eslint-watch": "^4.0.2",
     "prettier": "^1.15.3"
+  },
+  "dependencies": {
+    "mongoose": "^5.3.15"
   }
 }
