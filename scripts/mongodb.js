@@ -27,10 +27,10 @@ const setup = async () => {
     const db = client.db(dbConfig.name);
 
     await setupIndexes(db);
-
-    await client.close();
   } catch (err) {
     console.log(err);
+  } finally {
+    await client.close();
   }
 };
 
