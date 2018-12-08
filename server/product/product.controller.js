@@ -1,4 +1,6 @@
 const Product = require("./product.model");
+const InvalidDataError = require("./../errors/InvalidDataError");
+const paramsValidator = require("./../utils/paramsValidator");
 
 const productProjection = "name image price";
 
@@ -28,22 +30,38 @@ const buildProductsQuery = filters => {
 };
 
 const getAllProducts = async () => {
-  const products = await Product.find({}, productProjection);
+  try {
+    const products = await Product.find({}, productProjection);
 
-  return products;
+    return products;
+  } catch (err) {
+    throw err;
+  }
 };
 
 const getProducts = async filters => {
-  const query = buildProductsQuery(filters);
+  try {
+    const query = buildProductsQuery(filters);
+    const products = await query.exec();
 
-  const products = await query.exec();
-
-  return products;
+    return products;
+  } catch (err) {
+    throw err;
+  }
 };
 
 const getProduct = async id => {
-  const product = await Product.findById(id);
-  return product;
+  if (!paramsValidator.checkIsValidId(id)) {
+    throw new InvalidDataError(`Invalid product ID: ${id}`);
+  }
+
+  try {
+    const product = await Product.findById(id);
+
+    return product;
+  } catch (err) {
+    throw err;
+  }
 };
 
 module.exports = { getAllProducts, getProducts, getProduct };
