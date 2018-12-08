@@ -1,5 +1,4 @@
 const Order = require("./order.model");
-const InvalidDataError = require("./../errors/InvalidDataError");
 const dbValidaton = require("./../utils/dbValidaton");
 
 const orderProjection = "orderedOn ammount state";
@@ -39,11 +38,9 @@ const getOrders = async filters => {
 };
 
 const getOrder = async id => {
-  if (!dbValidaton.checkIsValidId(id)) {
-    throw new InvalidDataError(`Invalid order ID: ${id}`);
-  }
-
   try {
+    dbValidaton.validateObjectId(id);
+
     const order = await Order.findById(id);
 
     return order;

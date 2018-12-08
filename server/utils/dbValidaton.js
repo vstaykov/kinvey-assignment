@@ -11,7 +11,11 @@ const extractValidationErrorMessage = err => {
   return messages.join(";");
 };
 
-const checkIsValidId = id => mongoose.Types.ObjectId.isValid(id);
+const validateObjectId = id => {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw new InvalidDataError(`Invalid id: ${id}`);
+  }
+};
 
 const validateModel = async model => {
   try {
@@ -22,4 +26,4 @@ const validateModel = async model => {
   }
 };
 
-module.exports = { checkIsValidId, validateModel };
+module.exports = { validateObjectId, validateModel };
