@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const orderStatus = require("./order.status");
+
 const { Schema } = mongoose;
 
 const orderedProductsValidator = function(products) {
@@ -12,7 +14,6 @@ const orderedProductsValidationError = function(props) {
 
 const orderSchema = new Schema({
   orderedOn: Date,
-  ammount: Number,
   products: {
     type: [
       {
@@ -34,20 +35,37 @@ const orderSchema = new Schema({
     },
     default: undefined
   },
-  shippingPoint: {
-    type: String,
-    required: true
+  shippingInfo: {
+    address: {
+      type: String,
+      maxlength: 150,
+      required: true
+    },
+    recipient: {
+      type: String,
+      maxlength: 40,
+      required: true
+    }
+  },
+  state: {
+    status: {
+      type: String,
+      default: orderStatus.submitted
+    },
+    message: {
+      type: String,
+      maxlength: 100
+    }
   }
 });
 
 orderSchema.pre("save", function(next) {
   this.orderedOn = this._id.getTimestamp();
-  this.ammount = this.products.reduce(
-    (accumulator, item) => accumulator + item.quantity * item.product.price,
-    0
-  );
-
   next();
 });
+
+orderSchema.query.byStatus = function(status) {
+  return this.where({ "state.status": status });
+};
 
 module.exports = mongoose.model("Order", orderSchema);
