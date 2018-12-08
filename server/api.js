@@ -18,7 +18,8 @@ app.use((req, res) => {
   res.status(404).send("Not found");
 });
 
-app.use((err, req, res) => {
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
   const status = err instanceof InvalidDataError ? 400 : 500;
 
   res.status(status).send(err.message);
