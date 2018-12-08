@@ -4,27 +4,10 @@ const ordersController = require("./order.controller");
 
 const router = express.Router();
 
-router.get("/", async (req, res, next) => {
-  try {
-    const { query } = req;
-    let orders = [];
-
-    if (query) {
-      orders = await ordersController.getOrders(query);
-    } else {
-      orders = await ordersController.getAllOrders();
-    }
-
-    res.status(200).json(orders);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get("/:id", async (req, res, next) => {
+router.get("/:id/status", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const order = await ordersController.getOrder(id);
+    const order = await ordersController.getOrderStatus(id);
 
     if (order) {
       res.status(200).json(order);

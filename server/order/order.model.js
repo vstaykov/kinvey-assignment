@@ -47,8 +47,8 @@ const orderSchema = new Schema({
       required: true
     }
   },
-  state: {
-    status: {
+  status: {
+    state: {
       type: String,
       default: orderStatus.submitted
     },
@@ -63,9 +63,5 @@ orderSchema.pre("save", function(next) {
   this.orderedOn = this._id.getTimestamp();
   next();
 });
-
-orderSchema.query.byStatus = function(status) {
-  return this.where({ "state.status": status });
-};
 
 module.exports = mongoose.model("Order", orderSchema);
