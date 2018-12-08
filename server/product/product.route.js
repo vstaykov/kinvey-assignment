@@ -23,6 +23,7 @@ router.get("/:id", async (req, res) => {
 
   if (paramsValidator.checkIsValidId(id)) {
     const product = await productsController.getProduct(id);
+
     res.status(200).json(product);
   } else {
     res.status(400).send(`Invalid product ID: ${id}`);
