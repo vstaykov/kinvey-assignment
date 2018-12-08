@@ -11,8 +11,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/products", productsRoute);
-app.use("/orders", ordersRout);
+const v1Router = express.Router();
+v1Router.use("/products", productsRoute);
+v1Router.use("/orders", ordersRout);
+
+app.use("/api/v1", v1Router);
 
 app.use((req, res) => {
   res.status(404).send("Not found");
