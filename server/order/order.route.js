@@ -1,40 +1,50 @@
 const express = require("express");
 
 const ordersController = require("./order.controller");
-const paramsValidator = require("./../utils/paramsValidator");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const { query } = req;
-  let orders = [];
+router.get("/", async (req, res, next) => {
+  try {
+    const { query } = req;
+    let orders = [];
 
-  if (query) {
-    orders = await ordersController.getOrders(query);
-  } else {
-    orders = await ordersController.getAllOrders();
+    if (query) {
+      orders = await ordersController.getOrders(query);
+    } else {
+      orders = await ordersController.getAllOrders();
+    }
+
+    res.status(200).json(orders);
+  } catch (err) {
+    next(err);
   }
-
-  res.status(200).json(orders);
 });
 
-router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-
-  if (paramsValidator.checkIsValidId(id)) {
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
     const order = await ordersController.getOrder(id);
 
-    res.status(200).json(order);
-  } else {
-    res.status(400).send(`Invalid order ID: ${id}`);
+    if (order) {
+      res.status(200).json(order);
+    } else {
+      res.status(404).send(`Order with ID ${id} does not exist`);
+    }
+  } catch (err) {
+    next(err);
   }
 });
 
-router.post("/", async (req, res) => {
-  const { body } = req;
-  const order = await ordersController.createOrder(body);
+router.post("/", async (req, res, next) => {
+  try {
+    const { body } = req;
+    const order = await ordersController.createOrder(body);
 
-  res.status(200).send(order);
+    res.status(200).send(order);
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;

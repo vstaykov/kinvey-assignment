@@ -1,4 +1,6 @@
 const Order = require("./order.model");
+const InvalidDataError = require("./../errors/InvalidDataError");
+const paramsValidator = require("./../utils/paramsValidator");
 
 const orderProjection = "orderedOn ammount state";
 
@@ -16,30 +18,51 @@ const buildOrdersQuery = filters => {
 };
 
 const getAllOrders = async () => {
-  const orders = await Order.find({}, orderProjection);
+  try {
+    const orders = await Order.find({}, orderProjection);
 
-  return orders;
+    return orders;
+  } catch (err) {
+    throw err;
+  }
 };
 
 const getOrders = async filters => {
-  const query = buildOrdersQuery(filters);
+  try {
+    const query = buildOrdersQuery(filters);
+    const orders = await query.exec();
 
-  const orders = await query.exec();
-
-  return orders;
+    return orders;
+  } catch (err) {
+    throw err;
+  }
 };
 
 const getOrder = async id => {
-  const order = await Order.findById(id);
+  if (!paramsValidator.checkIsValidId(id)) {
+    throw new InvalidDataError(`Invalid order ID: ${id}`);
+  }
 
-  return order;
+  try {
+    const order = await Order.findById(id);
+
+    return order;
+  } catch (err) {
+    throw err;
+  }
 };
 
 const createOrder = async data => {
-  const order = new Order(data);
-  const createdOrder = await order.save();
+  try {
+    const order = new Order(data);
+    await paramsValidator.validateModel(order);
 
-  return createdOrder;
+    const createdOrder = await order.save();
+
+    return createdOrder;
+  } catch (err) {
+    throw err;
+  }
 };
 
 module.exports = { getAllOrders, getOrders, getOrder, createOrder };
