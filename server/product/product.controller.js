@@ -1,6 +1,6 @@
 const Product = require("./product.model");
 const InvalidDataError = require("./../errors/InvalidDataError");
-const paramsValidator = require("./../utils/paramsValidator");
+const dbValidaton = require("./../utils/dbValidaton");
 
 const productProjection = "name image price";
 
@@ -51,7 +51,7 @@ const getProducts = async filters => {
 };
 
 const getProduct = async id => {
-  if (!paramsValidator.checkIsValidId(id)) {
+  if (!dbValidaton.checkIsValidId(id)) {
     throw new InvalidDataError(`Invalid product ID: ${id}`);
   }
 
