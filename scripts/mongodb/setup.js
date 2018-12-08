@@ -22,4 +22,7 @@ const replicaSetConfig = {
 
 rs.initiate(replicaSetConfig);
 
-db.products.ensureIndex({ category: 1 });
+db.products.ensureIndex({
+  category: 1,
+  keywords: 1
+});
