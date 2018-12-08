@@ -29,7 +29,3 @@ sc start %secondaryService%
 sc start %arbiterService%
 
 mongo localhost:%primaryPort%/%dbName% %scriptDir%\setup.js
-
-
-
-
