@@ -9,7 +9,7 @@ SET arbiterPort=27019
 SET arbiterService=productsCatalogRepl-Arbiter
 SET dbName=productsCatalog
 
-cd ..\...
+cd ..\..
 
 mkdir data
 cd data
