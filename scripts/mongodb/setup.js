@@ -1,3 +1,5 @@
+/*  global db rs  */
+
 const replicaSetConfig = {
   _id: "productsCatalogRepl",
   members: [
@@ -21,5 +23,3 @@ const replicaSetConfig = {
 rs.initiate(replicaSetConfig);
 
 db.products.ensureIndex({ category: 1 });
-
-
