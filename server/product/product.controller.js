@@ -1,6 +1,6 @@
 const Product = require("./product.model");
 
-const productProjection = "name image price quantityInStock";
+const productProjection = "name image price";
 
 const buildProductsQuery = filters => {
   const { keywords, category, minPrice, maxPrice } = filters;

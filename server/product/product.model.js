@@ -20,11 +20,6 @@ const productSchema = new Schema({
     type: Number,
     required: true
   },
-  quantityInStock: {
-    type: Number,
-    required: true,
-    min: 0
-  },
   description: {
     type: String
   },
