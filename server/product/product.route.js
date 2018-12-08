@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
     products = await productsController.getAllProducts();
   }
 
-  res.json(products);
+  res.status(200).json(products);
 });
 
 router.get("/:id", async (req, res) => {
@@ -23,7 +23,7 @@ router.get("/:id", async (req, res) => {
 
   if (paramsValidator.checkIsValidId(id)) {
     const product = await productsController.getProduct(id);
-    res.json(product);
+    res.status(200).json(product);
   } else {
     res.status(400).send(`Invalid product ID: ${id}`);
   }
