@@ -8,6 +8,7 @@ const UrlRegExp = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{
 const productSchema = new Schema({
   name: {
     type: String,
+    maxlength: 30,
     required: true
   },
   category: {
@@ -34,17 +35,43 @@ const productSchema = new Schema({
     type: String,
     match: UrlRegExp,
     default: "http://media.fortisavi.kz/img/jpg/default-image.jpg"
+  },
+  keywords: {
+    type: [String]
   }
 });
 
-productSchema.statics.findByName = async function(name) {
-  const products = await this.find({ name: new RegExp(name, "i") });
-  return products;
+productSchema.pre("save", function(next) {
+  this.keywords = this.name
+    .trim()
+    .toLowerCase()
+    .split(/\W+/);
+
+  next();
+});
+
+productSchema.query.byKeywords = async function(keywords) {
+  return this.where({ keywords });
 };
 
-productSchema.statics.findByCategory = async function(category) {
-  const products = await this.find({ category: new RegExp(category, "i") });
-  return products;
+productSchema.query.byCategory = async function(category) {
+  return this.where({ category: new RegExp(category, "i") });
+};
+
+productSchema.query.byMinPrice = async function(minPrice) {
+  return this.where({
+    price: {
+      $gt: minPrice
+    }
+  });
+};
+
+productSchema.query.byMaxPrice = async function(maxPrice) {
+  return this.where({
+    price: {
+      $lt: maxPrice
+    }
+  });
 };
 
 module.exports = mongoose.model("Product", productSchema);
