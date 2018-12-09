@@ -15,11 +15,12 @@ const createClient = () => {
   );
 
   client.on("error", err =>
-    console.log(`Redis failed connecting to host ${host} on port ${port}. ${err}`)
+    console.log(
+      `Redis failed connecting to host ${host} on port ${port}. ${err}`
+    )
   );
 
   return client;
 };
-
 
 module.exports = { createClient };
