@@ -14,7 +14,7 @@ const orderedProductsValidationError = function(props) {
 
 const orderSchema = new Schema({
   orderedOn: Date,
-  products: {
+  items: {
     type: [
       {
         quantity: {
