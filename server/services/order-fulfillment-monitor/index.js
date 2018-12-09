@@ -1,4 +1,4 @@
-const redis = require("./../../utils/redis-client");
+const redis = require("./../../utils/redis");
 
 const KEY = "ordersFulfilled";
 const client = redis.createClient();

@@ -1,6 +1,6 @@
 const Order = require("./../order/order-model");
 const dbConfig = require("./../config/db-config");
-const redis = require("./redis-client");
+const redis = require("./redis");
 
 const client = redis.createClient();
 const pipeline = [
