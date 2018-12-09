@@ -1,6 +1,6 @@
 const mongose = require("mongoose");
 
-const config = require("./../config/db-config");
+const config = require("./config/db-config");
 
 const {
   dbProtocol,

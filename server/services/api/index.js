@@ -1,7 +1,7 @@
 const database = require("./../../database");
 const ordersMonitoring = require("./../../utils/orders-monitoring");
 const app = require("./api");
-const config = require("./../../../config/api-config");
+const config = require("./../../config/api-config");
 
 const { port } = config;
 

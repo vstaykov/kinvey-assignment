@@ -1,7 +1,7 @@
 const redis = require("redis");
 const bluebird = require("bluebird");
 
-const config = require("./../../config/redis-config");
+const config = require("./../config/redis-config");
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 
