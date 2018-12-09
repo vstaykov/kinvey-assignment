@@ -1,7 +1,7 @@
 const morgan = require("morgan");
 const rfs = require("rotating-file-stream");
 
-const config = require("./../../../config/apiconfig");
+const config = require("./../../../config/api-config");
 
 const logFormat =
   ":method :url :status :response-time ms - :res[content-length] :err";
