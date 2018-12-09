@@ -1,5 +1,5 @@
 const Product = require("./product.model");
-const dbValidaton = require("./../utils/dbValidaton");
+const dbValidaton = require("./../utils/db-validaton");
 
 const productProjection = "name image price";
 
