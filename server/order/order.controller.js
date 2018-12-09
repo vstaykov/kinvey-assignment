@@ -17,6 +17,7 @@ const createOrder = async data => {
   try {
     const order = new Order(data);
     await dbValidaton.validateModel(order);
+    await dbValidaton.validateOrderItemsExist(order.items);
 
     const createdOrder = await order.save();
 
