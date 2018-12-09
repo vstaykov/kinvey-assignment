@@ -6,14 +6,20 @@ const config = require("./../config/redis-config");
 bluebird.promisifyAll(redis.RedisClient.prototype);
 
 const { port, host } = config;
-const client = redis.createClient(port, host);
 
-client.on("connect", () =>
-  console.log(`Redis successfully connected to host ${host} on port ${port}`)
-);
+const createClient = () => {
+  const client = redis.createClient(port, host);
 
-client.on("error", err =>
-  console.log(`Redis failed connecting to host ${host} on port ${port}. ${err}`)
-);
+  client.onAsync("connect", () =>
+    console.log(`Redis successfully connected to host ${host} on port ${port}`)
+  );
 
-module.exports = client;
+  client.on("error", err =>
+    console.log(`Redis failed connecting to host ${host} on port ${port}. ${err}`)
+  );
+
+  return client;
+};
+
+
+module.exports = { createClient };
