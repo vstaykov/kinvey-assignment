@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const categories = require("./product.category");
 
 const { Schema } = mongoose;
-const UrlRegExp = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/gi;
+const urlRegExp = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/gi;
 
 const productSchema = new Schema({
   name: {
@@ -28,7 +28,7 @@ const productSchema = new Schema({
   },
   image: {
     type: String,
-    match: UrlRegExp,
+    match: urlRegExp,
     default: "http://media.fortisavi.kz/img/jpg/default-image.jpg"
   },
   keywords: {
