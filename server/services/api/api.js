@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 
 const InvalidDataError = require("./../../errors/InvalidDataError");
 const productsRoute = require("./../../product/product.route");
-const ordersRout = require("./../../order/order.route");
+const ordersRout = require("./../../order/order-route");
 const logging = require("./logging");
 
 const app = express();
