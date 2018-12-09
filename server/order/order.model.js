@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const orderStatus = require("./order.status");
+const orderStatus = require("./order-status");
 
 const { Schema } = mongoose;
 const phoneUrlRegExp = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s./0-9]*$/g;
