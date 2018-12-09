@@ -25,8 +25,6 @@ const monitorOrders = () => {
         "ordersRequests",
         orderFulfillmentRequest
       );
-
-      console.log(res);
     }
   });
 };
