@@ -11,7 +11,6 @@ const {
   replicaName
 } = dbConfig;
 const replicaConnectionString = `${dbProtocol}://${primaryUrl},${secondaryUrl},${arbiterUrl}/${dbName}`;
-// const replicaConnectionString = 12;
 
 const safeExit = () => {
   mongose.connection.close(() => {
