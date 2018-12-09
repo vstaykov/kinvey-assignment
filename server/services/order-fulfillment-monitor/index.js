@@ -1,4 +1,5 @@
 const redis = require("./../../utils/redis");
+const kinvey = require("./../../utils/kinvey");
 
 const KEY = "ordersFulfilled";
 const client = redis.createClient();
@@ -27,8 +28,7 @@ subscriber.on("connect", () => {
 subscriber.on("message", async (channel, message) => {
   if (message === "rpush") {
     const order = await getFulfilledOrder();
-
-    console.log(order);
+    await kinvey.storeData(order);
   }
 });
 
