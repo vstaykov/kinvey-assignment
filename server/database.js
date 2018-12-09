@@ -1,6 +1,6 @@
 const mongose = require("mongoose");
 
-const dbConfig = require("./../config/dbconfig");
+const config = require("./../config/db-config");
 
 const {
   dbProtocol,
@@ -9,7 +9,7 @@ const {
   arbiterUrl,
   dbName,
   replicaName
-} = dbConfig;
+} = config;
 const replicaConnectionString = `${dbProtocol}://${primaryUrl},${secondaryUrl},${arbiterUrl}/${dbName}`;
 
 const safeExit = () => {

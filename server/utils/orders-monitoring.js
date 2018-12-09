@@ -1,5 +1,5 @@
 const Order = require("./../order/order.model");
-const dbConfig = require("./../../config/dbconfig");
+const dbConfig = require("./../../config/db-config");
 const redis = require("./redis-client");
 
 const pipeline = [
