@@ -5,7 +5,7 @@ const authorizationToken = Buffer.from(
   `${KINVEY_USER}:${KINVEY_SECRET}`
 ).toString("base64");
 const client = axios.create({
-  baseUrl: "https://baas.kinvey.com",
+  baseURL: "https://baas.kinvey.com",
   headers: {
     Authorization: `Basic ${authorizationToken}`
   }
