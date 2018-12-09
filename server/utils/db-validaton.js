@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const InvalidDataError = require("./../errors/InvalidDataError");
-const Product = require("./../product/product.model");
+const Product = require("./../product/product-model");
 
 const extractValidationErrorMessage = err => {
   const messages = [];
