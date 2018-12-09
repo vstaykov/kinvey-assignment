@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const orderStatus = require("./order-status");
 
 const { Schema } = mongoose;
-const phoneUrlRegExp = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s./0-9]*$/g;
+const phoneRegExp = /[0-9]{0,15}/g;
 
 const orderedProductsValidator = function(products) {
   return products && products.length > 0;
@@ -49,8 +49,8 @@ const orderSchema = new Schema({
     },
     phone: {
       type: String,
-      maxlength: 30,
-      match: phoneUrlRegExp
+      required: true,
+      match: phoneRegExp
     }
   },
   status: {
