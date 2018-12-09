@@ -1,4 +1,4 @@
-const Order = require("./order.model");
+const Order = require("./order-model");
 const dbValidaton = require("./../utils/db-validaton");
 
 const getOrderStatus = async id => {
