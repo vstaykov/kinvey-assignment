@@ -14,9 +14,9 @@ const replicaConnectionString = `${dbProtocol}://${primaryUrl},${secondaryUrl},$
 
 const safeExit = () => {
   mongose.connection.close(() => {
-    console.log(`
-      Mongoose disconnected from ${replicaConnectionString} is disconnected on app termination`);
-    process.exit(0);
+    console.log(
+      `Mongoose disconnected from ${replicaConnectionString} app termination`
+    );
   });
 };
 

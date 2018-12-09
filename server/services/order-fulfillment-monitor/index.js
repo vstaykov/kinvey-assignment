@@ -5,10 +5,10 @@ const KEY = "ordersFulfilled";
 const client = redis.createClient();
 const subscriber = redis.createClient();
 
-const safeExit = async () => {
-  await subscriber.unsubscribeAsync();
-  await subscriber.quitAsync();
-  await client.quitAsync();
+const safeExit = () => {
+  subscriber.unsubscribe();
+  subscriber.quit();
+  client.quit();
 };
 
 const getFulfilledOrder = async () => {
@@ -32,9 +32,5 @@ subscriber.on("message", async (channel, message) => {
   }
 });
 
-process.on("SIGINT", async () => {
-  await safeExit();
-});
-process.on("SIGTERM", async () => {
-  await safeExit();
-});
+process.on("SIGINT", safeExit);
+process.on("SIGTERM", safeExit);

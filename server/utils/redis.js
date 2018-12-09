@@ -11,13 +11,19 @@ const createClient = () => {
   const client = redis.createClient(port, host);
 
   client.onAsync("connect", () =>
-    console.log(`Redis successfully connected to host ${host} on port ${port}`)
+    console.log(
+      `Redis client successfully connected to host ${host} on port ${port}`
+    )
   );
 
   client.on("error", err =>
     console.log(
-      `Redis failed connecting to host ${host} on port ${port}. ${err}`
+      `Redis client failed connecting to host ${host} on port ${port}. ${err}`
     )
+  );
+
+  client.on("end", () =>
+    console.log(`Redis client disconnected from host ${host} on port ${port}.`)
   );
 
   return client;
