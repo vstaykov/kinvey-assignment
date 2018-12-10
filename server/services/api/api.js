@@ -14,8 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/products", productsRoute);
 app.use("/orders", ordersRout);
 
-app.use("/api/v1", v1Router);
-
 app.use((req, res, next) => {
   res.status(404).send("Not found");
 
