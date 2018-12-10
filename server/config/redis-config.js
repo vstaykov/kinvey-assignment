@@ -1,4 +1,4 @@
-const port = process.env.REDIS_PORT || 6379;
 const host = process.env.REDIS_HOST || "localhost";
+const port = process.env.REDIS_PORT || 6379;
 
-module.exports = { port, host };
+module.exports = { host, port };
