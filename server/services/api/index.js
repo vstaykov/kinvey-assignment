@@ -1,13 +1,13 @@
 const http = require("http");
 
+const app = require("./api");
 const database = require("./../../utils/database");
 const ordersMonitoring = require("./../../utils/orders-monitoring");
-const app = require("./api");
 const config = require("./../../config/api-config");
 const logging = require("./../../utils/logging");
 
-const server = http.createServer(app);
 const { port } = config;
+const server = http.createServer(app);
 
 const safeExit = () => {
   server.close(() =>

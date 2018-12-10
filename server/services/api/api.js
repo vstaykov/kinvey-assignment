@@ -2,9 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const InvalidDataError = require("./../../errors/InvalidDataError");
+const apiLogging = require("./api-logging");
 const productsRoute = require("./../../product/product-route");
 const ordersRout = require("./../../order/order-route");
-const apiLogging = require("./api-logging");
 
 const app = express();
 

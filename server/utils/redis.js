@@ -1,12 +1,12 @@
 const redis = require("redis");
 const bluebird = require("bluebird");
 
-const config = require("./../config/redis-config");
 const logging = require("./logging");
-
-bluebird.promisifyAll(redis.RedisClient.prototype);
+const config = require("./../config/redis-config");
 
 const { port, host } = config;
+
+bluebird.promisifyAll(redis.RedisClient.prototype);
 
 const createClient = () => {
   const client = redis.createClient(port, host);
