@@ -2,6 +2,7 @@ const redis = require("redis");
 const bluebird = require("bluebird");
 
 const config = require("./../config/redis-config");
+const logging = require("./logging");
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 
@@ -11,19 +12,21 @@ const createClient = () => {
   const client = redis.createClient(port, host);
 
   client.onAsync("connect", () =>
-    console.log(
+    logging.logInfo(
       `Redis client successfully connected to host ${host} on port ${port}`
     )
   );
 
   client.on("error", err =>
-    console.log(
+    logging.logInfo(
       `Redis client failed connecting to host ${host} on port ${port}. ${err}`
     )
   );
 
   client.on("end", () =>
-    console.log(`Redis client disconnected from host ${host} on port ${port}.`)
+    logging.logInfo(
+      `Redis client disconnected from host ${host} on port ${port}.`
+    )
   );
 
   return client;

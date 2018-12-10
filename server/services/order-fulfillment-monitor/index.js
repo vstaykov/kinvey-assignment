@@ -1,5 +1,6 @@
 const redis = require("./../../utils/redis");
 const kinvey = require("./../../utils/kinvey");
+const logging = require("./../../utils/logging");
 
 const KEY = "ordersFulfilled";
 const client = redis.createClient();
@@ -21,9 +22,9 @@ const getFulfilledOrder = async () => {
 subscriber.on("connect", () => {
   subscriber.subscribe(`__keyspace@0__:${KEY}`, err => {
     if (err) {
-      console.error(err);
+      logging.logError(err);
     } else {
-      console.log("Successfully subscribed to keyspace");
+      logging.logInfo("Successfully subscribed to keyspace");
     }
   });
 });

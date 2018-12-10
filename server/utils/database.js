@@ -1,6 +1,7 @@
 const mongose = require("mongoose");
 
 const config = require("../config/db-config");
+const logging = require("./logging");
 
 const {
   dbProtocol,
@@ -14,22 +15,27 @@ const replicaConnectionString = `${dbProtocol}://${primaryUrl},${secondaryUrl},$
 
 const safeExit = () => {
   mongose.connection.close(() => {
-    console.log(
+    logging.logInfo(
       `Mongoose disconnected from ${replicaConnectionString} app termination`
     );
   });
 };
 
 mongose.connection.on("connected", () => {
-  console.log(`Mongose connected successfully to ${replicaConnectionString}`);
+  logging.logInfo(
+    `Mongose connected successfully to ${replicaConnectionString}`
+  );
 });
 
 mongose.connection.on("disconnect", () => {
-  console.log(`Mongose disconnected from ${replicaConnectionString}`);
+  logging.logInfo(`Mongose disconnected from ${replicaConnectionString}`);
 });
 
 mongose.connection.on("error", err => {
-  console.error(`Mongose failed to connect to ${replicaConnectionString}`, err);
+  logging.logError(
+    `Mongose failed to connect to ${replicaConnectionString}`,
+    err
+  );
 });
 
 process.on("SIGINT", safeExit);
@@ -45,7 +51,7 @@ const connect = async () => {
 
     connected = true;
   } catch (err) {
-    console.error(`Mongose connection failed. ${err.message}`);
+    logging.logError(`Mongose connection failed. ${err.message}`);
   }
 
   return connected;
