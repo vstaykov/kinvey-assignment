@@ -7,13 +7,12 @@ const ordersRout = require("./../../order/order-route");
 const logging = require("./logging");
 
 const app = express();
-const v1Router = express.Router();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-v1Router.use("/products", productsRoute);
-v1Router.use("/orders", ordersRout);
+app.use("/products", productsRoute);
+app.use("/orders", ordersRout);
 
 app.use("/api/v1", v1Router);
 
