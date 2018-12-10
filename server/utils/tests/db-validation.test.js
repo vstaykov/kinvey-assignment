@@ -1,16 +1,19 @@
+/* eslint-disable no-unused-expressions */
 /* global afterEach describe it:true */
 /* eslint no-undef: "error" */
 
 const assert = require("assert");
-const chai = require("chai");
 const sinon = require("sinon");
+const chai = require("chai");
+const sinonChai = require("sinon-chai");
 const mongoose = require("mongoose");
 
 const InvalidDataError = require("./../../errors/InvalidDataError");
 const Product = require("./../../product/product-model");
 const dbValidation = require("./../db-validaton");
 
-const { expect } = chai;
+chai.should();
+chai.use(sinonChai);
 
 describe("db-validation.js", () => {
   describe("#validateObjectId()", () => {
@@ -24,9 +27,9 @@ describe("db-validation.js", () => {
       it("should not throw an error", () => {
         isValid.returns(true);
 
-        expect(
-          dbValidation.validateObjectId.bind(dbValidation, "id")
-        ).to.not.throw();
+        dbValidation.validateObjectId
+          .bind(dbValidation, "id")
+          .should.not.throw();
       });
     });
 
@@ -34,9 +37,9 @@ describe("db-validation.js", () => {
       it("should throw InvalidDataError", () => {
         isValid.returns(false);
 
-        expect(dbValidation.validateObjectId.bind(dbValidation, "id")).to.throw(
-          InvalidDataError
-        );
+        dbValidation.validateObjectId
+          .bind(dbValidation, "id")
+          .should.throw(InvalidDataError);
       });
     });
   });
@@ -49,7 +52,7 @@ describe("db-validation.js", () => {
 
       await dbValidation.validateModel(model);
 
-      assert(model.validate.calledOnce);
+      model.validate.should.be.calledOnce;
     });
 
     describe("when model is valid", () => {
@@ -87,7 +90,7 @@ describe("db-validation.js", () => {
         try {
           await dbValidation.validateModel(model);
         } catch (err) {
-          expect(err.message).to.be.eq("nameErr;ageErr");
+          err.message.should.be.eq("nameErr;ageErr");
         }
       });
     });
@@ -135,7 +138,7 @@ describe("db-validation.js", () => {
             { product: "3" }
           ]);
         } catch (err) {
-          expect(err.message).to.contain("2, 3");
+          err.message.should.contain("2, 3");
         }
       });
     });

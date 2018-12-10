@@ -11,9 +11,9 @@ const sinonChai = require("sinon-chai");
 const route = require("./../product-route");
 const controller = require("./../product-controller");
 
-const { expect } = chai;
 let app;
 
+chai.should();
 chai.use(sinonChai);
 
 beforeEach(() => {
@@ -43,11 +43,10 @@ describe("product-route.js", () => {
           .query(query)
           .expect(200);
 
-        expect(res.body).to.be.deep.equal(products);
-
-        expect(getProducts).to.be.calledOnce;
-        expect(getProducts).to.be.calledWith(query);
-        expect(getAllProducts).not.to.be.calledOnce;
+        res.body.should.be.deep.equal(products);
+        getProducts.should.be.calledOnce;
+        getProducts.should.be.calledWith(query);
+        getAllProducts.should.not.be.calledOnce;
       });
     });
 
@@ -61,10 +60,9 @@ describe("product-route.js", () => {
           .get("/")
           .expect(200);
 
-        expect(res.body).to.be.deep.equal(products);
-
-        expect(getAllProducts).to.be.calledOnce;
-        expect(getProducts).not.to.be.calledOnce;
+        res.body.should.be.deep.equal(products);
+        getAllProducts.should.be.calledOnce;
+        getProducts.should.not.be.calledOnce;
       });
     });
 
@@ -75,7 +73,7 @@ describe("product-route.js", () => {
 
         /* eslint-disable-next-line no-unused-vars */
         app.use((err, req, res, next) => {
-          expect(err).to.be.deep.equal(error);
+          err.should.be.deep.equal(error);
           res.send();
         });
 
@@ -101,8 +99,8 @@ describe("product-route.js", () => {
           .get("/id")
           .expect(200);
 
-        expect(res.body).to.be.deep.equal(product);
-        expect(getProduct).to.be.calledOnce;
+        res.body.should.be.deep.equal(product);
+        getProduct.should.be.calledOnce;
       });
     });
 
@@ -114,7 +112,7 @@ describe("product-route.js", () => {
           .get("/id")
           .expect(404);
 
-        expect(getProduct).to.be.calledOnce;
+        getProduct.should.be.calledOnce;
       });
     });
 
@@ -125,7 +123,7 @@ describe("product-route.js", () => {
 
         /* eslint-disable-next-line no-unused-vars */
         app.use((err, req, res, next) => {
-          expect(err).to.be.deep.equal(error);
+          err.should.be.deep.equal(error);
           res.send();
         });
 
