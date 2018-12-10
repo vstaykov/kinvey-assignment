@@ -20,8 +20,11 @@ const getFulfilledOrder = async () => {
 
 subscriber.on("connect", () => {
   subscriber.subscribe(`__keyspace@0__:${KEY}`, err => {
-    const message = err || "Successfully subscribed to keyspace";
-    console.log(message);
+    if (err) {
+      console.error(err);
+    } else {
+      console.log("Successfully subscribed to keyspace");
+    }
   });
 });
 

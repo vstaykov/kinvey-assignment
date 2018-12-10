@@ -45,7 +45,7 @@ const connect = async () => {
 
     connected = true;
   } catch (err) {
-    console.log(`Mongose connection failed. ${err.message}`);
+    console.error(`Mongose connection failed. ${err.message}`);
   }
 
   return connected;

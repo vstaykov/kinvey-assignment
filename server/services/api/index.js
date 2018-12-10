@@ -19,8 +19,11 @@ const run = async () => {
 
   if (dbConnected) {
     server.listen(port, err => {
-      const message = err || `Server started listening on port ${port}`;
-      console.log(message);
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(`Server started listening on port ${port}`);
+      }
     });
 
     ordersMonitoring.monitorOrders();
