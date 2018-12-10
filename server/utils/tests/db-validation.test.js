@@ -12,7 +12,7 @@ const dbValidation = require("./../db-validaton");
 
 const { expect } = chai;
 
-describe("database.js", () => {
+describe("db-validation.js", () => {
   describe("#validateObjectId()", () => {
     const isValid = sinon.stub(mongoose.Types.ObjectId, "isValid");
 
