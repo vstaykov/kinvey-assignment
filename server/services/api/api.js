@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const InvalidDataError = require("./../../errors/InvalidDataError");
 const productsRoute = require("./../../product/product-route");
 const ordersRout = require("./../../order/order-route");
-const logging = require("./logging");
+const apiLogging = require("./api-logging");
 
 const app = express();
 
@@ -29,6 +29,6 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.use(logging.fileLogger);
+app.use(apiLogging.fileLogger);
 
 module.exports = app;
