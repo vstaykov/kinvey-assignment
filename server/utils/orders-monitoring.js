@@ -21,10 +21,7 @@ const monitorOrders = () => {
   changeStream.on("change", async data => {
     if (data.operationType === "insert") {
       const orderFulfillmentRequest = JSON.stringify(data.fullDocument);
-      const res = await client.rpushAsync(
-        "ordersRequests",
-        orderFulfillmentRequest
-      );
+      await client.rpushAsync("ordersRequests", orderFulfillmentRequest);
     }
   });
 };
