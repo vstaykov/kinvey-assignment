@@ -1,4 +1,5 @@
 const express = require("express");
+const _ = require("lodash");
 
 const productsController = require("./product-controller");
 
@@ -9,7 +10,7 @@ router.get("/", async (req, res, next) => {
     const { query } = req;
     let products = [];
 
-    if (query) {
+    if (query && !_.isEmpty(query)) {
       products = await productsController.getProducts(query);
     } else {
       products = await productsController.getAllProducts();
