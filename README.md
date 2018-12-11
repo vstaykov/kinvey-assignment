@@ -1,7 +1,3 @@
-
-## Links
--
-
 # Overview
 
 The homework is a way for you to show off your development skills, and also test your ability to learn the basics of a new language and framework that you haven't used before.  We’re looking for your coding style, your ability to understand the requirements and create a functional piece of code as output.  Your project should include installation and run instructions, functional and working code, and an explanation of what the code does in this Readme.  As a deliverable, push your final code to to this repo.
@@ -25,7 +21,7 @@ Some things to consider:
 Feel free to ask questions to clarify any of the requirements, and have fun with it!
 
 # Installation
-Follow the [installation instructions](../master/docs/INSTALLATION.md) to setup all prerequisites
+Follow the [installation instructions](../master/docs/INSTALLATION.md) to setup all prerequisites.
 
 # Run
   1. Configure application
