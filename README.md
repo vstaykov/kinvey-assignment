@@ -23,7 +23,7 @@ Feel free to ask questions to clarify any of the requirements, and have fun with
 # Installation
 
 ## MongoDB
-TEXT
+A simple running MongoDB replica is required for this app. You can use an existing/hosted one or follow the instructions bellow to create and setup a replica locally.
 
 ### Windows
   1. Install [MongoDB Server](https://www.mongodb.com/download-center/community)
@@ -43,4 +43,3 @@ TEXT
   3. Run the configuration [run.sh](../blob/master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica (Primary, Secondary and Arbiter)
 
   *Note: Feel free to update the scripts defaults to your preffered dbs locations, ports, replica name etc.*
-
