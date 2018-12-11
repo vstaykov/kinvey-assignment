@@ -383,6 +383,16 @@ describe("product-route.js", () => {
 
         getProduct.should.be.calledOnce;
       });
+
+      it("should return message", async () => {
+        getProduct.resolves();
+
+        const res = await request(app)
+          .get("/id")
+          .expect(404);
+
+        res.body.should.be.a("string").and.not.empty;
+      });
     });
 
     describe("when error occurs", () => {
