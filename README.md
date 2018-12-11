@@ -37,9 +37,9 @@ A simple running MongoDB replica is required for this app. You can use an existi
   2. Make sure mongod and monogo commands are available anywhere in the terminal
   3. Open terminal in [scripts/mongodb folder](../master/scripts/mongodb)
   4. Mark [run.sh](../master/scripts/mongodb/run.sh) as executable
-    ```
-    #> chmod +x run.sh
-    ```
+  ```
+  #> chmod +x run.sh
+  ```
   3. Run the configuration [run.sh](../master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica (Primary, Secondary and Arbiter)
 
   *Note: Feel free to update the scripts defaults to your preffered dbs locations, ports, replica name etc.*
@@ -51,9 +51,9 @@ A simple running Redis server is required for this app. You can use an existing/
 ### Windows
   1. Install [Docker for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows)
   2. Run Redis container and expose the Redis container listening port (6379) to a port on your machine *local_machine_port:redis_container_port*
-    ```
-    #> docker run -d -p 6379:6379 --name redis-server redis
-    ```
+  ```
+  #> docker run -d -p 6379:6379 --name redis-server redis
+  ```
 
 ### Linux
   1. Install Redis
@@ -64,13 +64,15 @@ Install latest LTS [Node.js](https://nodejs.org/en/) (at this point 10.14.1)
 
 ## NPM packages
   1. Open terminal in the root folder
-  2. Run npm install
-
+  2. Run
+    ```
+    npm install
+    ```
 # Run
   1. Configure application
      1. Open [ecosystem.config.js](../ecosystem.config.js)
      2. Setup the MongoDB, Redis and Kinvey configuration via the Node environment variables in the *env* sections of the two applications
   2. Run
-  ```
-  npm start
-  ```
+    ```
+    npm start
+    ```
