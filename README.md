@@ -62,4 +62,6 @@ A simple running Redis server is required for this app. You can use an existing/
 ## NodeJS
 Install latest LTS [Node.js](https://nodejs.org/en/) (at this point 10.14.1)
 
-
+## NPM packages
+  1. Open terminal in the root folder
+  2. Run npm install
