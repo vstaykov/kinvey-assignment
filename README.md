@@ -33,13 +33,13 @@ A simple running MongoDB replica is required for this app. You can use an existi
   *Note: Feel free to update the scripts defaults to your preffered dbs locations, ports, replica name etc.*
 
 ### Linux / Linux
-  1. Install MongoDB on Linux(https://docs.mongodb.com/manual/administration/install-on-linux)/[macOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+  1. Install MongoDB on [Linux](https://docs.mongodb.com/manual/administration/install-on-linux)/[macOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
   2. Make sure mongod and monogo commands are available anywhere in the terminal
-  3. Open terminal in [scripts/mongodb folder](../blob/master/scripts/mongodb)
-  4. Mark [run.sh](../blob/master/scripts/mongodb/run.sh) as executable
+  3. Open terminal in [scripts/mongodb folder](../master/scripts/mongodb)
+  4. Mark [run.sh](../master/scripts/mongodb/run.sh) as executable
     ```
     #> chmod +x run.sh
     ```
-  3. Run the configuration [run.sh](../blob/master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica (Primary, Secondary and Arbiter)
+  3. Run the configuration [run.sh](../master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica (Primary, Secondary and Arbiter)
 
   *Note: Feel free to update the scripts defaults to your preffered dbs locations, ports, replica name etc.*
