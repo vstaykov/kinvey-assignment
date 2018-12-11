@@ -37,7 +37,7 @@ TEXT
   2. Make sure mongod and monogo commands are available anywhere in the terminal
   3. Open terminal in [scripts/mongodb folder](../blob/master/scripts/mongodb)
   4. Mark [run.sh](../blob/master/scripts/mongodb/run.sh) as executable
-    ```console
+    ```
     #> chmod +x run.sh
     ```
   3. Run the configuration [run.sh](../blob/master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica (Primary, Secondary and Arbiter)
