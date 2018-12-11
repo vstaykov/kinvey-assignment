@@ -66,7 +66,7 @@ Install latest LTS [Node.js](https://nodejs.org/en/) (at this point 10.14.1)
   1. Open terminal in the root folder
   2. Install all npm packages
   ```
-  npm install
+  #> npm install
   ```
 
 # Run
@@ -75,5 +75,5 @@ Install latest LTS [Node.js](https://nodejs.org/en/) (at this point 10.14.1)
      2. Setup the MongoDB, Redis and Kinvey configuration via the Node environment variables in the *env* sections of the two applications
   2. Start the applications
   ```
-  npm start
+  #> npm start
   ```
