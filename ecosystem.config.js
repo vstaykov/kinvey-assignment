@@ -5,6 +5,8 @@ const config = {
       script: "./server/services/api/index.js",
       output: "",
       error: "",
+      max_restarts: 5,
+      min_uptime: "10s",
       instances: 2,
       env: {
         NODE_ENV: "production",
@@ -26,7 +28,9 @@ const config = {
       script: "./server/services/order-fulfillment-monitor/index.js",
       output: "",
       error: "",
-      instances: 2,
+      max_restarts: 5,
+      min_uptime: "10s",
+      instances: 1,
       env: {
         NODE_ENV: "production",
         REDIS_HOST: "",
