@@ -11,7 +11,7 @@ bluebird.promisifyAll(redis.RedisClient.prototype);
 const createClient = () => {
   const client = redis.createClient(port, host);
 
-  client.onAsync("connect", () =>
+  client.on("connect", () =>
     logging.logInfo(
       `Redis client successfully connected to host ${host} on port ${port}`
     )
