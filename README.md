@@ -71,7 +71,7 @@ Install latest LTS [Node.js](https://nodejs.org/en/) (at this point 10.14.1)
 
 # Run
   1. Configure application
-     1. Open [ecosystem.config.js](../ecosystem.config.js)
+     1. Open [ecosystem.config.js](../master/ecosystem.config.js)
      2. Setup the MongoDB, Redis and Kinvey configuration via the Node environment variables in the *env* sections of the two applications
   2. Start the applications
   ```
