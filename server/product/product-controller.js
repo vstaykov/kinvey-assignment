@@ -1,9 +1,9 @@
 const Product = require("./product-model");
 const dbValidaton = require("./../utils/db-validaton");
 
-const productProjection = "name image price";
+const productProjection = "name image price category";
 
-const buildProductsQuery = filters => {
+const buildProductsFiltrationQuery = filters => {
   const { keywords, category, minPrice, maxPrice } = filters;
   const query = Product.find();
 
@@ -28,20 +28,42 @@ const buildProductsQuery = filters => {
   return query;
 };
 
-const getAllProducts = async () => {
-  try {
-    const products = await Product.find({}, productProjection);
+const getProductsTotalCount = async filters => {
+  const query = buildProductsFiltrationQuery(filters);
+  const count = await query.countDocuments();
 
-    return products;
-  } catch (err) {
-    throw err;
-  }
+  return count;
+};
+
+const getLastProductId = async filters => {
+  const { offset } = filters;
+
+  const filtrationQuery = buildProductsFiltrationQuery(filters);
+  const skippedProducts = await filtrationQuery.limit(offset);
+  const lastProductId = skippedProducts[skippedProducts.length - 1]._id;
+
+  return lastProductId;
 };
 
 const getProducts = async filters => {
   try {
-    const query = buildProductsQuery(filters);
-    const products = await query.exec();
+    const { limit, offset } = filters;
+    const totalCount = await getProductsTotalCount(filters);
+
+    let products = [];
+
+    if (offset < totalCount && limit > 0) {
+      const query = buildProductsFiltrationQuery(filters);
+
+      if (offset > 0) {
+        const lastProductId = await getLastProductId(filters);
+
+        query.find({ _id: { $gt: lastProductId } });
+      }
+
+      query.limit(limit);
+      products = await query.exec();
+    }
 
     return products;
   } catch (err) {
@@ -61,4 +83,4 @@ const getProduct = async id => {
   }
 };
 
-module.exports = { getAllProducts, getProducts, getProduct };
+module.exports = { getProducts, getProduct };

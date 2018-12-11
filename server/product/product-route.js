@@ -1,20 +1,28 @@
 const express = require("express");
-const _ = require("lodash");
 
 const productsController = require("./product-controller");
 
+const MAX_LIMIT = 100;
+const DEFAULT_OFFSET = 0;
 const router = express.Router();
+
+const createProductsFilterFromQuery = query => {
+  const filter = query ? { ...query } : {};
+
+  const offset = parseInt(query.offset, 10) || DEFAULT_OFFSET;
+  filter.offset = offset >= 0 ? offset : DEFAULT_OFFSET
+
+  const limit = parseInt(query.limit, 10);
+  filter.limit = limit > 0 && limit < MAX_LIMIT ? limit : MAX_LIMIT;
+
+  return filter;
+};
 
 router.get("/", async (req, res, next) => {
   try {
-    const { query } = req;
-    let products = [];
+    const filter = createProductsFilterFromQuery(req.query);
 
-    if (query && !_.isEmpty(query)) {
-      products = await productsController.getProducts(query);
-    } else {
-      products = await productsController.getAllProducts();
-    }
+    const products = await productsController.getProducts(filter);
 
     res.status(200).json(products);
   } catch (err) {
