@@ -284,6 +284,60 @@ describe("product-route.js", () => {
     });
   });
 
+  describe("#GET /categories", () => {
+    const getProductsCategories = sinon.stub(
+      controller,
+      "getProductsCategories"
+    );
+
+    afterEach(() => {
+      getProductsCategories.reset();
+    });
+
+    describe("when getting categories is successful", () => {
+      it("should return status code 200", async () => {
+        const categories = ["foo", "bar"];
+
+        getProductsCategories.resolves(categories);
+
+        const res = await request(app)
+          .get("/categories")
+          .expect(200);
+
+        res.status.should.be.equal(200);
+        getProductsCategories.should.be.calledOnce;
+      });
+
+      it("should return categories", async () => {
+        const categories = ["foo", "bar"];
+
+        getProductsCategories.resolves(categories);
+
+        const res = await request(app)
+          .get("/categories")
+          .expect(200);
+
+        res.body.should.be.deep.equal(categories);
+        getProductsCategories.should.be.calledOnce;
+      });
+    });
+
+    describe("when error occurs", () => {
+      it("should call next middleware with the error", async () => {
+        const error = new Error("failed");
+        getProductsCategories.rejects(error);
+
+        /* eslint-disable-next-line no-unused-vars */
+        app.use((err, req, res, next) => {
+          err.should.be.deep.equal(error);
+          res.send();
+        });
+
+        await request(app).get("/categories");
+      });
+    });
+  });
+
   describe("#GET /:id", () => {
     const getProduct = sinon.stub(controller, "getProduct");
 

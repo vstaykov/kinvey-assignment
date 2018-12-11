@@ -30,6 +30,16 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/categories", async (req, res, next) => {
+  try {
+    const categories = await productsController.getProductsCategories();
+
+    res.status(200).json(categories);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;

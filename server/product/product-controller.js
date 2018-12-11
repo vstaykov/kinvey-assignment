@@ -71,6 +71,16 @@ const getProducts = async filters => {
   }
 };
 
+const getProductsCategories = async () => {
+  try {
+    const categories = await Product.distinct("category");
+
+    return categories;
+  } catch (err) {
+    throw err;
+  }
+};
+
 const getProduct = async id => {
   try {
     dbValidaton.validateObjectId(id);
@@ -83,4 +93,4 @@ const getProduct = async id => {
   }
 };
 
-module.exports = { getProducts, getProduct };
+module.exports = { getProducts, getProduct, getProductsCategories };
