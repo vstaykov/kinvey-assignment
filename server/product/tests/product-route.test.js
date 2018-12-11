@@ -377,11 +377,11 @@ describe("product-route.js", () => {
       it("should return status code 404", async () => {
         getProduct.resolves();
 
-        await request(app)
+        const res = await request(app)
           .get("/id")
           .expect(404);
 
-        getProduct.should.be.calledOnce;
+        res.status.should.be.equal(404);
       });
 
       it("should return message", async () => {
