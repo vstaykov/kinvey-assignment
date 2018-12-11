@@ -374,7 +374,7 @@ describe("product-route.js", () => {
     });
 
     describe("when product is not found", () => {
-      it("should return 404", async () => {
+      it("should return status code 404", async () => {
         getProduct.resolves();
 
         await request(app)
