@@ -59,4 +59,7 @@ A simple running Redis server is required for this app. You can use an existing/
   1. Install Redis
   2. Run Redis server
 
+## NodeJS
+Install latest LTS [Node.js](https://nodejs.org/en/) (at this point 10.14.1)
+
 
