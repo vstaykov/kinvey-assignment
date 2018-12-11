@@ -10,7 +10,7 @@ const createProductsFilterFromQuery = query => {
   const filter = query ? { ...query } : {};
 
   const offset = parseInt(query.offset, 10) || DEFAULT_OFFSET;
-  filter.offset = offset >= 0 ? offset : DEFAULT_OFFSET
+  filter.offset = offset >= 0 ? offset : DEFAULT_OFFSET;
 
   const limit = parseInt(query.limit, 10);
   filter.limit = limit > 0 && limit < MAX_LIMIT ? limit : MAX_LIMIT;
