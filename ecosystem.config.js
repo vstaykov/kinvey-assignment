@@ -38,7 +38,8 @@ const config = {
         REDIS_PORT: "",
         KINVEY_USER: "",
         KINVEY_SECRET: "",
-        KINVEY_APP: ""
+        KINVEY_APP: "",
+        KINVEY_COLLECTION: ""
       }
     }
   ]

@@ -1,6 +1,12 @@
 const axios = require("axios");
 
-const { KINVEY_USER, KINVEY_SECRET, KINVEY_APP } = process.env;
+const {
+  KINVEY_USER,
+  KINVEY_SECRET,
+  KINVEY_APP,
+  KINVEY_COLLECTION
+} = process.env;
+
 const authorizationToken = Buffer.from(
   `${KINVEY_USER}:${KINVEY_SECRET}`
 ).toString("base64");
@@ -11,8 +17,8 @@ const client = axios.create({
   }
 });
 
-const storeData = async (collection, data) => {
-  const url = `/appdata/${KINVEY_APP}/${collection}`;
+const storeData = async data => {
+  const url = `/appdata/${KINVEY_APP}/${KINVEY_COLLECTION}`;
   const config = {
     headers: {
       "Content-Type": "application/json"
