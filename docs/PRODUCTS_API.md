@@ -16,7 +16,7 @@ Content-Type: application/json
 ###### Modifiers
 Modifier | Description
 --- | ---
-```keywords``` | Return products that contain the specified keywords
+```keywords``` | Return products that contain the specified keywords. More than one keywords must be specified comma (,) separated
 ```category``` | Return products from the specified category
 ```minPrice``` | Return products with price greater than or equal to the specified
 ```maxPrice``` | Return products with price less than or equal to the specified
