@@ -89,4 +89,6 @@ As the technologies used are fairly new to me and having in mind the time frame 
 The following aspects of the project can be further implemented or improved:
   * Implement products API sorting
   * Cover the whole codebase with unit tests
+  * Log performance and errors in cloud based solution for LIVE monitoring
+  * Research build and minification application
 
