@@ -18,8 +18,8 @@ Modifier | Description
 --- | ---
 ```keywords``` | Return products that contain the specified keywords
 ```category``` | Return products from the specified category
-```minPrice``` | Return products with price greater than the specified
-```maxPrice``` | Return products with price less than the specified
+```minPrice``` | Return products with price greater than or equal to the specified
+```maxPrice``` | Return products with price less than or equal to the specified
 
 ##### Pagination
 The returned response would contain max 100 products. For more products you can use ```offset``` and ```limit``` parameters to paginate the results.

@@ -54,7 +54,7 @@ productSchema.query.byCategory = async function(category) {
 productSchema.query.byMinPrice = async function(minPrice) {
   return this.where({
     price: {
-      $gt: minPrice
+      $gte: minPrice
     }
   });
 };
@@ -62,7 +62,7 @@ productSchema.query.byMinPrice = async function(minPrice) {
 productSchema.query.byMaxPrice = async function(maxPrice) {
   return this.where({
     price: {
-      $lt: maxPrice
+      $lte: maxPrice
     }
   });
 };
