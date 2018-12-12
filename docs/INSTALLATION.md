@@ -1,24 +1,24 @@
 # Installation
 
 ## MongoDB
-A simple running MongoDB replica set is required for this app. You can use an existing/hosted one or follow the instructions bellow to create and setup a replica set locally.
+A simple running MongoDB replica set is required for this app. You can use an existing/hosted one or follow the instructions bellow to create and setup a replica set locally. If you use and existing one please do not forget to create indexes on ```product.keywords``` and ```product.category``` as described in the end of [stup.js](kinvey-assignment/blob/master/scripts/mongodb/setup.js).
 
 ### Windows
   1. Install [MongoDB Server](https://www.mongodb.com/download-center/community)
   2. Add *<MONGO_INSTALLATION_PATH>\Server\<VERSION>\bin* folder to PATH system environment variable
-  3. Run the configuration [run.bat](../blob/master/scripts/mongodb/run.bat) file (with administrator privileges if required) to create and setup a simple MongodDB replica set (Primary, Secondary and Arbiter)
+  3. Run the configuration [run.bat](kinvey-assignment/blob/master/scripts/mongodb/run.bat) file (with administrator privileges if required) to create and setup a simple MongodDB replica set (Primary, Secondary and Arbiter)
 
   *Note: Feel free to update the script defaults to your preffered dbs locations, ports, replica set name etc.*
 
 ### Linux / Linux
   1. Install MongoDB on [Linux](https://docs.mongodb.com/manual/administration/install-on-linux)/[macOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
   2. Make sure mongod and monogo commands are available anywhere in the terminal
-  3. Open terminal in [scripts/mongodb folder](../master/scripts/mongodb)
-  4. Mark [run.sh](../master/scripts/mongodb/run.sh) as executable
+  3. Open terminal in [scripts/mongodb folder](kinvey-assignment/master/scripts/mongodb)
+  4. Mark [run.sh](kinvey-assignment/master/scripts/mongodb/run.sh) as executable
   ```
   #> chmod +x run.sh
   ```
-  3. Run the configuration [run.sh](../master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica set (Primary, Secondary and Arbiter)
+  3. Run the configuration [run.sh](kinvey-assignment/master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica set (Primary, Secondary and Arbiter)
 
   *Note: Feel free to update the script defaults to your preffered dbs locations, ports, replica set name etc.*
 
