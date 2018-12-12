@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const categories = require("./product-category");
-
 const { Schema } = mongoose;
 const urlRegExp = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/gi;
 
@@ -13,7 +11,7 @@ const productSchema = new Schema({
   },
   category: {
     type: String,
-    enum: categories,
+    maxlength: 20,
     required: true
   },
   price: {

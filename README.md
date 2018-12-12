@@ -21,7 +21,7 @@ Some things to consider:
 Feel free to ask questions to clarify any of the requirements, and have fun with it!
 
 # Installation
-Follow the [installation instructions](../master/docs/INSTALLATION.md) to setup all prerequisites
+Follow the [installation instructions](../master/docs/INSTALLATION.md) to setup all prerequisites.
 
 # Run
   1. Configure application

@@ -1,14 +1,14 @@
 # Installation
 
 ## MongoDB
-A simple running MongoDB replica is required for this app. You can use an existing/hosted one or follow the instructions bellow to create and setup a replica locally.
+A simple running MongoDB replica set is required for this app. You can use an existing/hosted one or follow the instructions bellow to create and setup a replica set locally.
 
 ### Windows
   1. Install [MongoDB Server](https://www.mongodb.com/download-center/community)
   2. Add *<MONGO_INSTALLATION_PATH>\Server\<VERSION>\bin* folder to PATH system environment variable
-  3. Run the configuration [run.bat](../blob/master/scripts/mongodb/run.bat) file (with administrator privileges if required) to create and setup a simple MongodDB replica (Primary, Secondary and Arbiter)
+  3. Run the configuration [run.bat](../blob/master/scripts/mongodb/run.bat) file (with administrator privileges if required) to create and setup a simple MongodDB replica set (Primary, Secondary and Arbiter)
 
-  *Note: Feel free to update the scripts defaults to your preffered dbs locations, ports, replica name etc.*
+  *Note: Feel free to update the script defaults to your preffered dbs locations, ports, replica set name etc.*
 
 ### Linux / Linux
   1. Install MongoDB on [Linux](https://docs.mongodb.com/manual/administration/install-on-linux)/[macOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
@@ -18,9 +18,9 @@ A simple running MongoDB replica is required for this app. You can use an existi
   ```
   #> chmod +x run.sh
   ```
-  3. Run the configuration [run.sh](../master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica (Primary, Secondary and Arbiter)
+  3. Run the configuration [run.sh](../master/scripts/mongodb/run.sh) file (with sudo if required) to create and setup a simple MongodDB replica set (Primary, Secondary and Arbiter)
 
-  *Note: Feel free to update the scripts defaults to your preffered dbs locations, ports, replica name etc.*
+  *Note: Feel free to update the script defaults to your preffered dbs locations, ports, replica set name etc.*
 
 
 ## Redis
@@ -38,7 +38,7 @@ A simple running Redis server is required for this app. You can use an existing/
   2. Run Redis server
 
 ## NodeJS
-Install latest LTS [Node.js](https://nodejs.org/en/) (at this point 10.14.1)
+Install latest LTS [Node.js](https://nodejs.org/en/) (at this point 10.14.1).
 
 ## NPM packages
   1. Open terminal in the root folder
