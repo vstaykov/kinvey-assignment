@@ -33,8 +33,8 @@ Follow the [installation instructions](../master/docs/INSTALLATION.md) to setup 
 
 # Details
 The functionality of this app is separated into two services. The goal of this is improved separation of concernes and robustness:
-  * Product catalog REST API - viewing a product catalog, submitting orders and order fulfillment requests and viewing order status
-  * Orders fulfillment monitoring - monitoring for order fulfillments events in Redis and writing the provided data into Kinvey data store
+  * **Product catalog REST API** - viewing a product catalog, submitting orders and order fulfillment requests and viewing order status
+  * **Orders fulfillment monitoring** - monitoring for order fulfillments events in Redis and writing the provided data into Kinvey data store
 
 ## General Info
 
