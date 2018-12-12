@@ -1,4 +1,5 @@
 /*  global db rs  */
+/* eslint-disable no-global-assign */
 
 const replicaSetConfig = {
   _id: "productsCatalogRepl",
@@ -22,7 +23,7 @@ const replicaSetConfig = {
 
 rs.initiate(replicaSetConfig);
 
-db.products.ensureIndex({
-  category: 1,
-  keywords: 1
-});
+db = db.getSiblingDB("productsCatalog");
+
+db.products.createIndex({ keywords: 1 }, { name: "KeywordsIndex" });
+db.products.createIndex({ category: 1 }, { name: "CategoryIndex" });
