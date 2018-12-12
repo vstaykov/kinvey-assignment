@@ -34,7 +34,7 @@ Follow the [installation instructions](../master/docs/INSTALLATION.md) to setup 
 # Details
 The functionality of this app is separated into two services. The goal of this is improved separation of concernes and robustness:
   * **Product catalog REST API** - viewing a product catalog, submitting orders and order fulfillment requests and viewing order status
-  * **Orders fulfillment monitoring** - monitoring for order fulfillments events in Redis and writing the provided data into Kinvey data store
+  * **Orders fulfillment monitoring** - monitoring for order fulfillment events in Redis and writing the provided data into Kinvey data store
 
 ## General Info
 
@@ -56,7 +56,7 @@ The REST API provieds two main endpoints -```/products``` and ```/orders```.
   * [```/orders``` API](../master/docs/ORDERS_API.md)
 
 #### Order fulfillment requests submission
-A MongoDB change stream is used to monitor the local db for newly created orders. When an order is inserted, the order data is sent to a Redis server for further processing by a "fulfillment system" = added to a LIST in a specific key (a contract with the "fulfillment system").
+A MongoDB change stream is used to monitor the local db for newly created orders. When an order is inserted, the order data is sent to a Redis server for further processing by a "fulfillment system" - added to a LIST in a specific key (a contract with the "fulfillment system").
 
 #### Load balancing
 PM2 and Node.js clustering are used to start two (configurable in the [ecosystem.config.js](../master/ecosystem.config.js)) API instances sharing the same port. This would improve performance and enable handling high volume requests.
@@ -76,7 +76,7 @@ When an item is inserted to the Redis list it is popped, retrieved and stored in
 # Development Notes
 
 ## Test data
-For testing purposes, you can run ```mongo <PRIMARY_SERVER_URL> ./scripts/mongodb/add-test-products.js``` to populate some test products. Just make sure the db name in [add-test-products.js](../master/scripts/mongodb/add-test-projects.js) matches the one you use.
+For testing purposes, you can run ```mongo <PRIMARY_SERVER_URL> ./scripts/mongodb/add-test-products.js``` to populate some test products. Just make sure the db name in [add-test-products.js](../master/scripts/mongodb/add-test-products.js) matches the one you use.
 
 ## Best Practices
 I have tried to follow all best practices for code structure and formatting, naming conventions, RESTful API design etc. Some development aspects do not have established best practices and the approach followed is based on my personal thoughts, e.g:
@@ -84,11 +84,13 @@ I have tried to follow all best practices for code structure and formatting, nam
   * unit tests location
 
 ## Testing
-As the technologies used are fairly new to me and having in mind the time frame - I have decided to start with the implementation and then covering with unit tests. Not all parts are covered with tests but I tried to show testing of different components - utility code, API routes.
+As the technologies used are fairly new to me and having in mind the time frame - I have decided to start with the implementation and then covering with unit tests. Not all parts are covered with tests but I tried to show testing different components - utility code, API routes.
 
 ## TODO
 The following aspects of the project can be further implemented or improved:
   * Implement products API sorting
+  * Implement products API compression
+  * Implement products API caching strategy
   * Cover the whole codebase with unit tests
   * Log performance and errors in cloud based solution for LIVE monitoring
   * Research build and minification application

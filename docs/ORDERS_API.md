@@ -33,7 +33,6 @@ Order with ID <ID> does not exist
 ##### Request
 > POST /orders
 > Content-Type: application/json
->
 > <JSON-Document-representing-Order>
 
 ##### Response

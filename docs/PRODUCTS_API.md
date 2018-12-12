@@ -9,14 +9,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 <JSON-Document-representing-Products>
-
-*Note:* Return products has only *name*, *image*, *price* and *category* properties
 ```
+> *Note:* Return products has only *name*, *image*, *price* and *category* properties
+
 
 ###### Modifiers
 Modifier | Description
 --- | ---
-```keywords``` | Return products that contain the specified keywords. More than one keywords must be specified comma (,) separated
+```keywords``` | Return products that contain any of the specified keywords. More than one keywords must be specified comma (,) separated
 ```category``` | Return products from the specified category
 ```minPrice``` | Return products with price greater than or equal to the specified
 ```maxPrice``` | Return products with price less than or equal to the specified
@@ -31,6 +31,7 @@ The returned response would contain max 100 products. For more products you can 
 ```limit```
   * default value is 100
   * max value is 100
+  * if limit is less than the available results - ```limit``` number of them are returned
   * if limit is more than the available results - all of them are returned
 
 
