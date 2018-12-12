@@ -44,7 +44,7 @@ productSchema.pre("save", function(next) {
 });
 
 productSchema.query.byKeywords = async function(keywords) {
-  return this.where({ keywords });
+  return this.where({ keywords: { $in: keywords } });
 };
 
 productSchema.query.byCategory = async function(category) {
