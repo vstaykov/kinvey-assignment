@@ -1,4 +1,6 @@
 /* global db */
+/* eslint-disable no-global-assign */
+
 db = db.getSiblingDB("productsCatalog");
 
 db.products.insert({
