@@ -1,5 +1,5 @@
 /* global db */
-db.getSiblingDB("productsCatalog");
+db = db.getSiblingDB("productsCatalog");
 
 db.products.insert({
   name: "PC",
