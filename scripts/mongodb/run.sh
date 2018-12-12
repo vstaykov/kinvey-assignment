@@ -1,3 +1,4 @@
+#!/bin/bash
 SCRIPT_DIR=$(pwd)
 REPLICA_NAME="productsCatalogRepl"
 PRIMARY_PORT="27017"
