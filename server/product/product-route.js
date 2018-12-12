@@ -15,7 +15,9 @@ const createProductsFilterFromQuery = query => {
   const limit = parseInt(query.limit, 10);
   filter.limit = limit > 0 && limit < MAX_LIMIT ? limit : MAX_LIMIT;
 
-  filter.keywords = query.keywords && query.keywords.split(",");
+  if (query.keywords) {
+    filter.keywords = query.keywords.split(/[\s,]+/);
+  }
 
   return filter;
 };

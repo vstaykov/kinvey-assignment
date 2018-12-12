@@ -32,7 +32,8 @@ describe("product-route.js", () => {
     describe("when request has params", () => {
       it("should get products with request params", async () => {
         const query = {
-          keywods: ["foo", "bar"],
+          maxPrice: "30",
+          minPrice: "20",
           offset: 1,
           limit: 20
         };
@@ -63,6 +64,31 @@ describe("product-route.js", () => {
         await request(app)
           .get("/")
           .query({})
+          .expect(200);
+
+        getProducts.should.be.calledOnce;
+        getProducts.should.be.calledWith(expectedFilter);
+      });
+    });
+
+    describe("when request has keywords param", () => {
+      it("should get products with splitted keywords array", async () => {
+        const query = {
+          offset: 5,
+          limit: 15,
+          keywords: "foo,bar"
+        };
+        const expectedFilter = {
+          ...query,
+          keywords: ["foo", "bar"]
+        };
+        const products = [{ name: "product foo" }, { name: "product bar" }];
+
+        getProducts.resolves(products);
+
+        await request(app)
+          .get("/")
+          .query(query)
           .expect(200);
 
         getProducts.should.be.calledOnce;
