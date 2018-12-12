@@ -15,7 +15,7 @@ app.use("/products", productsRoute);
 app.use("/orders", ordersRout);
 
 app.use((req, res, next) => {
-  res.status(404).send("Not found");
+  res.status(404).json("Not found");
 
   next();
 });
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   const status = err instanceof InvalidDataError ? 400 : 500;
 
-  res.status(status).send(err.message);
+  res.status(status).json(err.message);
   res.err = err;
 
   next();
