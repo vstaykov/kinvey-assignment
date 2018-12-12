@@ -6,7 +6,7 @@ const config = {
       output: "",
       error: "",
       max_restarts: 5,
-      min_uptime: "10s",
+      min_uptime: "1m",
       instances: 2,
       env: {
         NODE_ENV: "production",
@@ -29,7 +29,7 @@ const config = {
       output: "",
       error: "",
       max_restarts: 5,
-      min_uptime: "10s",
+      min_uptime: "1m",
       instances: 1,
       env: {
         NODE_ENV: "production",
