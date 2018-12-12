@@ -3,8 +3,8 @@ const config = {
     {
       name: "api",
       script: "./server/services/api/index.js",
-      output: "/logs/services/api/output.log",
-      error: "/logs/services/api/error.log",
+      output: "./logs/services/api/output.log",
+      error: "./logs/services/api/error.log",
       merge_logs: true,
       max_restarts: 5,
       min_uptime: "1m",
@@ -27,8 +27,8 @@ const config = {
     {
       name: "order-fulfillment-monitor",
       script: "./server/services/order-fulfillment-monitor/index.js",
-      output: "/logs/services/order-fulfillment-monitor/output.log",
-      error: "/logs/services/order-fulfillment-monitor/output.log",
+      output: "./logs/services/order-fulfillment-monitor/output.log",
+      error: "./logs/services/order-fulfillment-monitor/output.log",
       max_restarts: 5,
       min_uptime: "1m",
       instances: 1,
