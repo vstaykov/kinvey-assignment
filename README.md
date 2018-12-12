@@ -75,7 +75,7 @@ When an item is inserted to the Redis list it is popped, retrieved and stored in
 # Development Notes
 
 ## Test data
-For testing purposes, you can run ```mongo <PRIMARY_SERVER_URL> ./scripts/mongodb/add-test-products.js``` to populate some test products. Just make sure the db name in [add-test-products.js](/master/scripts/mongodb/add-test-projects.js) matches the one you use.
+For testing purposes, you can run ```mongo <PRIMARY_SERVER_URL> ./scripts/mongodb/add-test-products.js``` to populate some test products. Just make sure the db name in [add-test-products.js](../master/scripts/mongodb/add-test-projects.js) matches the one you use.
 
 ## Best Practices
 I have tried to follow all best practices for code structure and formatting, naming conventions, RESTful API design etc. Some development aspects do not have established best practices and the approach followed is based on my personal thoughts, e.g:
