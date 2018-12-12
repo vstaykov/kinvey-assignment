@@ -38,7 +38,7 @@ The functionality of this app is separated into two services. The goal of this i
 ## General Info
 
 #### Configuration
-API, local DB, Redis and Kinvey connections can be configured via Node environment variables. You can easily alter the configuration by providing values to these variables in the [ecosystem.config.js](..master/ecosystem.config.js).
+API, local DB, Redis and Kinvey connections can be configured via Node environment variables. You can easily alter the configuration by providing values to these variables in the [ecosystem.config.js](../master/ecosystem.config.js).
 
 #### Local storage
 MongoDB replica set is used for storing products and orders. It is a simple replica set with primary, secondary and arbiter servers. In case the primary is not available for any reason the application would switch to the secondary until the first is available again. In addition, indexes on ```product.keywords``` and ```product.category``` are created for better search and retrieve performance.
@@ -46,7 +46,7 @@ MongoDB replica set is used for storing products and orders. It is a simple repl
 #### Process management
 PM2 and Node.js clustering is used to properly manage app processes. By default, one orders fulfillment monitoring instance and two API instances are created. PM2 handles load balancing and process restarts due to failure or other reason thus improving performance and minimizing down time.
 
-Default PM2 processes logs names and locations can be configured in the [ecosystem.config.js](..master/ecosystem.config.js).
+Default PM2 processes logs names and locations can be configured in the [ecosystem.config.js](../master/ecosystem.config.js).
 
 ## Product catalog REST API
 The REST API provieds two main endpoints -```/products``` and ```/orders```.
@@ -58,10 +58,10 @@ The REST API provieds two main endpoints -```/products``` and ```/orders```.
 A MongoDB change stream is used to monitor the local db for newly created orders. When an order is inserted, the order data is sent to a Redis server for further processing by a "fulfillment system" = added to a LIST in a specific key (a contract with the "fulfillment system").
 
 #### Load balancing
-PM2 and Node.js clustering are used to start two (configurable in the [ecosystem.config.js](..master/ecosystem.config.js)) API instances sharing the same port. This would improve performance and enable handling high volume requests.
+PM2 and Node.js clustering are used to start two (configurable in the [ecosystem.config.js](../master/ecosystem.config.js)) API instances sharing the same port. This would improve performance and enable handling high volume requests.
 
 #### Logging
-API failed requests 4xx and 5xx are logged in a log file. The file name and location can be easily configured in the [ecosystem.config.js](..master/ecosystem.config.js).
+API failed requests 4xx and 5xx are logged in a log file. The file name and location can be easily configured in the [ecosystem.config.js](../master/ecosystem.config.js).
 
 ## Order fulfillment monitoring
 The order fulfillment monitoring monitors Redis for order fulfillment events and sends the fulfillment data to a dedicated Kinvey data store.
