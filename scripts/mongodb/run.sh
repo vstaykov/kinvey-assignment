@@ -25,4 +25,4 @@ mongod --dbpath "$DATA_DIR/db2" --port $SECONDARY_PORT --replSet $REPLICA_NAME -
 
 mongod --dbpath "$DATA_DIR/db3" --port $ARBITER_PORT --replSet $REPLICA_NAME --fork --logpath "$DATA_DIR/$ARBITER_LOG_FILE" --logappend
 
-mongo --port $PRIMARY_PORT "$SCRIPT_DIR\setup-replica-set.js"
+mongo --port $PRIMARY_PORT "$SCRIPT_DIR/setup-replica-set.js"
