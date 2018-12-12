@@ -25,6 +25,7 @@ Follow the [installation instructions](../master/docs/INSTALLATION.md) to setup 
   1. Configure application
      1. Open [ecosystem.config.js](../master/ecosystem.config.js)
      2. Setup the MongoDB, Redis and Kinvey configuration via the Node environment variables in the *env* sections of the two applications
+     > *Note:* Update instances depending on the CPU of your system. If it has only 1 core - change instances to 1
   2. Start the applications
   ```
   #> npm start
